@@ -1,0 +1,36 @@
+public class Solution {
+    public boolean checkValidString(String s) {
+        int minOpen = 0;
+        int maxOpen = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == '(') {
+                minOpen++;
+                maxOpen++;
+            } else if (c == ')') {
+                minOpen--;
+                maxOpen--;
+            } else if (c == '*') {
+                minOpen--;
+                maxOpen++;
+            }
+
+            if (maxOpen < 0) {
+                return false;
+            }
+
+            if (minOpen < 0) {
+                minOpen = 0;
+            }
+        }
+
+        return minOpen == 0;
+    }
+}
+
+
+// Synced seamlessly with LeetHub Pro
+// Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+// Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
